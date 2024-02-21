@@ -1,0 +1,47 @@
+트리 순회: 정해진 순서에 따라 트리의 모든 노드를 방문
+  * 깊이 우선 탐색: 전위 순회, 중위 순회, 후위 순회
+  * 너비 우선 탐색: 레벨 순서 순회
+
+  #전위 순회
+      void preorder(Node* node) {
+          if(node) {
+              std::cout << node->data << std::endl;
+              preorder(node->left);
+              preorder(node->right);
+          }
+      }
+
+  #중위 순회
+      void inorder(Node* node) {
+          if(node) {
+              inorder(node->left);
+              std::cout << node->data << std::endl;
+              inorder(node->right);
+          }
+      }
+
+  #후위 순회
+      void postorder(Node* node) {
+          if(node) {
+              postorder(node->left);
+              postorder(node->right);
+              std::cout << node->data << std::endl;
+          }
+      }
+
+    *트리 노드 삭제 구현과 같은 구
+
+  #레벨 순서 순회
+      void levelorder(Node* node) {
+          std::queue<Node*> q;
+          q.push(node);
+
+          while(!q.empty()) {
+              auto curr = q.front();
+              q.pop();
+
+              std::cout << curr->data << " ";
+              if(curr->left)  q.push(curr->left);
+              if(curr->right)  q.push(curr->right);
+          }
+      }
